@@ -8,7 +8,8 @@ class App extends Component{
     this.state = {
       board: ["?", "?", "?", "?", "?", "?", "?", "?", "?"],
       treasureLocation: null,
-      bombLocation: null
+      bombLocation: null,
+      gameOver: false
     }
   }
 
@@ -20,14 +21,14 @@ class App extends Component{
 
 
   handleGamePlay = (index) => {
-    const { board, treasureLocation, bombLocation } = this.state
-    if(index === treasureLocation){
+    const { board, treasureLocation, bombLocation, gameOver } = this.state
+    if(index === treasureLocation && gameOver === false){
       board[index] = "💎"
-      this.setState({ board: board })
-    } else if(index === bombLocation){
+      this.setState({ board: board, gameOver: true })
+    } else if(index === bombLocation && gameOver === false){
       board[index] = "💣"
-      this.setState({ board: board })
-    } else {
+      this.setState({ board: board, gameOver: true })
+    } else if(gameOver === false) {
       board[index] = "🌴"
       this.setState({ board: board })
     }
@@ -36,6 +37,7 @@ class App extends Component{
   render(){
     console.log("treasure:", this.state.treasureLocation)
     console.log("bomb:", this.state.bombLocation)
+    console.log("gameOver", this.state.gameOver)
     return(
       <>
         <h1>Treasure Hunt Game</h1>
@@ -51,6 +53,7 @@ class App extends Component{
             )
           })}
         </div>
+        { this.state.gameOver && <div>Game Over!</div> }
       </>
     )
   }
