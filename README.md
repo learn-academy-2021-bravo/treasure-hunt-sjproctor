@@ -4,10 +4,29 @@
 - Pseudocode!!
 - Ask clarifying questions
 
+### SetUp
+- Got our repo from GitHub classroom
+- Cloned, cd, yarn, yarn start
+
+
 ### User Stories
-- As a user, I can see a page with a 3 by 3 grid board game with a question mark in each square.
-- As a user, when I click on one of the question marks an alert appears with the index position of that question mark in the array.
-- As a user, when I click on one of the question marks instead of the alert the question mark turns into a tree emoji.
+- (DONE) As a user, I can see a page with a 3 by 3 grid board game with a question mark in each square.
+  - Created a div in Square
+  - Gave it className
+  - Put some styling on the square to have width, height, boarder
+  - Imported the square component
+  - Mapped over the array in state, returned the Square component call
+  - Styled the game board
+  - Passed the question mark into each square with props
+- (DONE) As a user, when I click on one of the question marks an alert appears with the index position of that question mark in the array.
+  - Set up an onClick on the square div
+  - Created a handleClick method in the Square component
+  - Created a handleGamePlay method in App
+  - Passed the handleGamePlay method into the component call
+  - Called the handleGamePlay method and passed in the index
+- (DONE) As a user, when I click on one of the question marks instead of the alert the question mark turns into a tree emoji.
+  - Destructure the array out of state
+  - Use the index to reassign a value using the emoji keyboard (control + command + space)
 - As a user, if I select the winning square the question mark will become a treasure emoji.
 - As a user, if I select the losing square the question mark will become a bomb emoji.
 - As a user, I can see a counter that shows how many guesses I have left. The counter starts at 5 and decrements one every time I click on a square that is not the treasure nor the bomb.
